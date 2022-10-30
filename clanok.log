@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.27)  30 OCT 2022 18:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.27)  30 OCT 2022 19:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -339,22 +339,13 @@ No file clanok.bbl.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `clanok.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `clanok.out':
-(rerunfilecheck)             Before: 7B5DA9CB73A534CA0695B36DB162E93F;1019
-(rerunfilecheck)             After:  B5878B06667670356B8EFCD51B81D257;1047.
+Package rerunfilecheck Info: File `clanok.out' has not changed.
+(rerunfilecheck)             Checksum: B5878B06667670356B8EFCD51B81D257;1047.
  ) 
 Here is how much of TeX's memory you used:
  9750 strings out of 478268
  154113 string characters out of 5846347
- 460374 words of memory out of 5000000
+ 460379 words of memory out of 5000000
  27818 multiletter control sequences out of 15000+600000
  482597 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -375,7 +366,7 @@ ic/cs/cstt10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cs/cstt
 9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0600.
 pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pf
 b></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on clanok.pdf (2 pages, 111990 bytes).
+Output written on clanok.pdf (2 pages, 112004 bytes).
 PDF statistics:
  151 PDF objects out of 1000 (max. 8388607)
  111 compressed objects within 2 object streams
