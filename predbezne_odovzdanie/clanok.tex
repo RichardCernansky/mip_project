@@ -3,19 +3,20 @@
 \documentclass[10pt,twoside,slovak,a4paper]{article}
 
 \usepackage[english]{babel}
-%\usepackage[T1]{fontenc}
+\usepackage[T1]{fontenc}
 \usepackage[IL2]{fontenc} % lepšia sadzba písmena Ľ než v T1
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{url} % príkaz \url na formátovanie URL
 \usepackage{hyperref} % odkazy v texte budú aktívne (pri niektorých triedach dokumentov spôsobuje posun textu)
 
+
 \usepackage{cite}
-%\usepackage{times}
+\usepackage{times}
 
 \pagestyle{headings}
 
-\title{Steering behaviours of autonomous agents for realistic display in 2 dimensions and the use in games\thanks{Semestrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2022/23, vedenie: Mirwais Ahmadzai}} 
+\title{Application of vector algebra and physics in designing steering behaviour of autonomous agents for realistic display in 2 dimensions\thanks{Semestrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2022/23, vedenie: Mirwais Ahmadzai}} 
 
 \author{Richard Čerňanský\\[2pt]
 	{\small Slovenská technická univerzita v Bratislave}\\
@@ -23,7 +24,7 @@
 	{\small \texttt{xcernansky@stuba.sk}}
 	}
 
-\date{\small October 18 2022 } 
+\date{\small November 3, 2022 } 
 
 
 
@@ -33,87 +34,95 @@
 
 \begin{abstract}
 
+In this article we will focus on the problematic of steering behaviours of autonomous agents in software and display methods. The importance of this topic hides in usability in animation, film effects and mainly in games. If we want the user to have the best realistic experience from movement of the objects possible, we have to obey specific rules of physics that will be explained. Applying the knowledge, we will then see methods how to simulate a seek and arrival steering behavior. As a tool we will use a p5.js library of JavaScript.
+
 \end{abstract}
 
 
-
 \section{Introduction}
-\quad  Autonomous character or autonomous agent is an arbitrary entity of biological, mechanical or software origin, which is able to make decisions based on assigned instructions and consecutive stimulus from the environment . In this article I want to focus on problematic of steering behaviors of autonomous characters in software and its display methods. The importance of this topic hides in usability in animation, film effects and mainly in games. If we want the user to have the best realistic experience from movement of the objects possible, we have to obey specific rules and think about how they behave in certain occasions. 
 
+Development in animation and games forces the creators to make the games more and more realistic. One of the most important aspects of realistic perception of a game is the movement of objects and the animation itself. Designing movement behaviors of these objects is then necessary. 
 
+In this article, we will call the objects autonomous agents. More about them will be explained in part 2.1. After understanding the concept of autonomous agents, we will state a problem in part 3.2. In part 4 we will have a closer look at the problem and derive some formulas. Finally, we will simulate the steering behavior, stated as a problem (p.3.2) in part 5 by writing the code in p5.js (p.5.2).
 
+\section{Autonomous agents} \label{autonomous agents}
 
-\section{Nejaká časť} \label{nejaka}
+\subsection{Definition of autonomous agents} \label{definition of a.a.}
 
-Let’s say we want to simulate a man on a bicycle arriving to garage that is behind a curve. In real world, he will not arrive in a constant speed and immediately stop on a place he usually parks his bicycle. He starts braking when he sees the curve and changes his speed. The arrive has to be smooth otherwise he would be able to turn around the curve and crashed into the wall. If we want to simulate a situation like this we need to follow certain rules I will explain below.
-
-\begin{figure*}[tbh]
-\centering
-%\includegraphics[scale=1.0]{diagram.pdf}
-. Stane sa z neho označný plávajúci objekt. Po vytvorení diagramu zrušte znak \texttt{\%} pred príkazom \verb|\includegraphics| označte tento riadok ako komentár (tiež pomocou znaku \texttt{\%}).
-\caption{Rozhodujúci argument.}
-\label{f:rozhod}
-\end{figure*}
-
-
-
-\section{Iná časť} \label{ina}
-
-Základným problémom je teda\ldots{} Najprv sa pozrieme na nejaké vysvetlenie (časť~\ref{ina:nejake}), a potom na ešte nejaké (časť~\ref{ina:nejake}).\footnote{Niekedy môžete potrebovať aj poznámku pod čiarou.}
-
-Môže sa zdať, že problém vlastne nejestvuje\cite{Coplien:MPD}, ale bolo dokázané, že to tak nie je~\cite{Czarnecki:Staged, Czarnecki:Progress}. Napriek tomu, aj dnes na webe narazíme na všelijaké pochybné názory\cite{PLP-Framework}. Dôležité veci možno \emph{zdôrazniť kurzívou}.
-
-
-\subsection{Nejaké vysvetlenie} \label{ina:nejake}
-
-Niekedy treba uviesť zoznam:
+The autonomous agents generally refer to an entity that chooses how to act in its environment without any influence from a global plan or a leader. In games, these agents are not controlled by a player, but they are important part of the game because their action can significantly influence the flow of the game. For example, a villain who runs away from police decides on his own that he wants to escape and starts an action. There are three key components of autonomous agents we want to keep in mind. 
 
 \begin{itemize}
-\item jedna vec
-\item druhá vec
-	\begin{itemize}
-	\item x
-	\item y
-	\end{itemize}
+\item An autonomous agent has limited ability to perceive its environment. It makes sense that if autonomous agent must decide on its action, it should be somehow aware of the environment it is located in. The question here is how much limited the ability is. If we wanted the object to be all-knowing creature aware of everything else around it, we need to give it an access to information about everything. On the other side if we wanted it to have just very narrow view of the environment, let’s say just a few pixels around it.
+\item An autonomous agent processes the information from its environment and calculates an action. The action is represented as a force that influences the object. For example, a police officer sees a thief and is attracted to him. The attraction is represented by a force pointing towards his location. 
+\item An autonomous agent should have no leader. This is not something that defines every autonomous agent. Sometimes you need to state some global rules that it must follow, but mostly you want the object to decide on its own, calculate its own actions.
 \end{itemize}
 
-Ten istý zoznam, len číslovaný:
-
-\begin{enumerate}
-\item jedna vec
-\item druhá vec
-	\begin{enumerate}
-	\item x
-	\item y
-	\end{enumerate}
-\end{enumerate}
 
 
-\subsection{Ešte nejaké vysvetlenie} \label{ina:este}
+\subsection{Types of behaviors according to the number of objects involved} \label{types of behaviors}
 
-\paragraph{Veľmi dôležitá poznámka.}
-Niekedy je potrebné nadpisom označiť odsek. Text pokračuje hneď za nadpisom.
+Craig Raynolds (odkaz na clanok) in his paper introduces some types of behaviors that could appear talking about autonomous agents and how they behave. They divide into two main groups:
 
+\begin{itemize}
+\item Simple behavior for individuals and pairs
+\item Combined behaviors and groups
+\end{itemize}
 
-
-\section{Dôležitá časť} \label{dolezita}
-
-
-
-
-\section{Ešte dôležitejšia časť} \label{dolezitejsia}
+In this article we will focus on the first mentioned. 
 
 
+\section{Problem statement} \label{problem}
+
+\subsection{Braitenberg vehicle} \label{braitenberg}
+
+Braitenberg vehicle is an entity that is a hypothetical self-operating machine that can make decisions about how to behave in an environment based on its sense perception. (odkaz na knihu Vehicles by Valentino Braitenberg). 
+
+Vehicle A steers away from the light source and vehicle B steers towards the light source. It is not just about steering away or towards the sun. We could say that these vehicles feel emotion about the object. Vehicle A feels fear from the sun and vehicle B is attracted to it. We want the term vehicle to be clear because in the paper when I mention vehicle, I will be refering to the concept of Braitenberg vehicle and its characteristics. 
+
+\subsection{Problem to solve} \label{problem to solve}
+
+Let’s say we want to simulate a simple behavior for a pair (odkaz na 2.2). A vehicle (imagine a car) that wants to arrive to a specific position (f. e. parking lot). We could say that in the car there is a driver. He perceives the environment with his eyes and sees the location of the parking lot. Processes his distance from the place and calculates and action. He starts steering towards the parking lot (attraction towards the parking lot is the same as vehicle B in 3.1). Notice the word steering here which is very important. We do not want to simulate an unrealistic car that is immediately able to turn around and head towards the target in a maximum speed. We want the animation to be smooth and realistically looking. What rules do we have to follow if we want to simulate a situation like this?
 
 
-\section{Záver} \label{zaver} % prípadne iný variant názvu
+\section{Seek and arrive – a pursuit of a static target} \label{seek and arrive}
 
+\subsection{Simple vehicle model} \label{model}
+Craig Raynolds (odkaz na clanok) in his paper (on page 6) presents a simple vehicle model which I need to introduce to you. There are 6 attributes that our vehicle will have. 
 
+Simple Vehicle Model: \{mass- scalar; position- vector; velocity-	vector; maxForce - scalar; maxSpeed- scalar; orientation- N basis vectors\}
 
-%\acknowledgement{Ak niekomu chcete poďakovať\ldots}
+\subsection{Characteristics of seek and arrive } \label{characterictics of seek and arrive}
+
+\subsubsection{Seek} \label{seek}
+
+Seeking steers a character towards a specified position in a space. This behavior aligns the vector of a velocity towards the target. But how do we calculate the steering force if we do not want the vehicle to steer completely right after seeing the target? We can diagram our problem from 3.2.
+
+\subsubsection{Arrive} \label{arrive}
+
+When we want to simulate arrival, we must think about gradually decreasing the speed of the vehicle and eventually stop it.
+
+\section{Simulating the behavior in p5.js} \label{simulation} 
+
+\subsection{What is p5.js?} \label{p5 char} 
+
+p5.js is a JavaScript library for creative coding, with a focus on making coding accessible and inclusive for artists, designers, or educators. It is a collection of pre-written code and provides us with tools that simplify the process of creating interactive visuals with code in the web browser. p5.js is free and open source. We will use it to simulate the problem from chapter 3.2. 
+
+\subsection{Writing the code } \label{code} 
+
+(#Just a comment. Here I plan to explain certain parts of the code according to the explanation from 4.2. The code is already done, and you can check it here. Clicking on the red play button in the left corner runs the simulation.)
+
+\subsubsection{class Vehicle} \label{class vehicle} 
+
+\section{Other possible steering behaviors} \label{other} 
+
+\section{Conclusion} \label{coclusion} 
+
+\acknowledgement{I would like to thank my friend Lukáš Častven for introducing the problem to me and arousing my interest in the topic\ldots}
 
 
 % týmto sa generuje zoznam literatúry z obsahu súboru literatura.bib podľa toho, na čo sa v článku odkazujete
 \bibliography{literatura}
 \bibliographystyle{plain} % prípadne alpha, abbrv alebo hociktorý iný
+
+
 \end{document}

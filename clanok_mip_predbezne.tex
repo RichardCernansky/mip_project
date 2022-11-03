@@ -1,0 +1,59 @@
+% Metódy inžinierskej práce
+
+\documentclass[10pt,twoside,slovak,a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[IL2]{fontenc} % lepšia sadzba písmena Ľ než v T1
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{url} % príkaz \url na formátovanie URL
+\usepackage{hyperref} % odkazy v texte budú aktívne (pri niektorých triedach dokumentov spôsobuje posun textu)
+
+\usepackage{cite}
+%\usepackage{times}
+
+\pagestyle{headings}
+
+\title{Application of vector physics in designing steering behaviour of autonomous agents for realistic display in 2 dimensions\thanks{Semestrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2022/23, vedenie: Mirwais Ahmadzai}} 
+
+\author{Richard Čerňanský\\[2pt]
+	{\small Slovenská technická univerzita v Bratislave}\\
+	{\small Fakulta informatiky a informačných technológií}\\
+	{\small \texttt{xcernansky@stuba.sk}}
+	}
+
+\date{\small November 3, 2022 } 
+
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+In this article we will focus on problematics of steering behaviours of autonomous agents in software and display methods. The importance of this topic hides in usability in animation, film effects and mainly in games. If we want the user to have the best realistic experience from movement of the objects possible, we have to obey specific rules of physics that will be explained. Applying the knowledge, we will then see methods how to simulate a seek and arrival steering behavior. As a tool we will use a p5.js library of JavaScript.
+
+\end{abstract}
+
+
+\section{Introduction}
+
+Development in animation and games forces the creators to make the games more and more realistic. One of the most important aspects of realistic perception of a game is the movement of objects and the animation itself. Designing movement behaviors of these objects is then necessary. 
+
+In this article, we will call the objects autonomous agents. More about them will be explained in part 2.1. After understanding the concept of autonomous agents, we will state a problem in part 3.2. In part 4 we will have a closer look at the problem and derive some formulas. Finally, we will simulate the steering behavior, stated as a problem (p.3.2) in part 5 by writing the code in p5.js (p.5.2).
+
+\section{Autonomous agents} \label{nejaka}
+
+
+
+\acknowledgement{I would like to thank my friend Lukáš Častven for introducing the problem to me and arousing my interest in the topic\ldots}
+
+
+% týmto sa generuje zoznam literatúry z obsahu súboru literatura.bib podľa toho, na čo sa v článku odkazujete
+\bibliography{literatura}
+\bibliographystyle{plain} % prípadne alpha, abbrv alebo hociktorý iný
+
+
+\end{document}
