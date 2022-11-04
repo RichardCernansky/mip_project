@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.27)  3 NOV 2022 22:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.27)  4 NOV 2022 12:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -356,9 +356,30 @@ File: omsptm.fd
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 92.
+<diagram_car.png, id=90, 579.66562pt x 418.56375pt>
+File: diagram_car.png Graphic file (type png)
+<use diagram_car.png>
+Package pdftex.def Info: diagram_car.png  used on input line 103.
+(pdftex.def)             Requested size: 144.91605pt x 104.64067pt.
+<diagram_steeringForce.png, id=92, 560.59438pt x 314.17375pt>
+File: diagram_steeringForce.png Graphic file (type png)
+<use diagram_steeringForce.png>
+Package pdftex.def Info: diagram_steeringForce.png  used on input line 103.
+(pdftex.def)             Requested size: 140.14824pt x 78.54324pt.
+<diagram_radius.png, id=93, 742.27313pt x 494.84875pt>
+File: diagram_radius.png Graphic file (type png)
+<use diagram_radius.png>
+Package pdftex.def Info: diagram_radius.png  used on input line 109.
+(pdftex.def)             Requested size: 185.56783pt x 123.71188pt.
+
+Underfull \vbox (badness 6364) has occurred while \output is active []
+
+ [3 <./diagram_car.png> <./diagram_steeringForce.png>]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 115.
 
 ! You can't use `macro parameter character #' in horizontal mode.
-l.112 (#
+l.130 (#
         Just a comment. Here I plan to explain certain parts of the code acc...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
@@ -366,7 +387,7 @@ If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
 ! Undefined control sequence.
-l.120 \acknowledgement
+l.139 \acknowledgement
                       {I would like to thank my friend Lukáš Častven for ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -375,29 +396,31 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 No file clanok.bbl.
-[3] [4] (./clanok.aux)
+[4 <./diagram_radius.png>] (./clanok.aux)
 Package rerunfilecheck Info: File `clanok.out' has not changed.
 (rerunfilecheck)             Checksum: A622657EDE39659F3AB106D9243E0710;3128.
  ) 
 Here is how much of TeX's memory you used:
- 9865 strings out of 478268
- 156275 string characters out of 5846347
- 464112 words of memory out of 5000000
- 27920 multiletter control sequences out of 15000+600000
+ 9888 strings out of 478268
+ 156792 string characters out of 5846347
+ 464113 words of memory out of 5000000
+ 27939 multiletter control sequences out of 15000+600000
  494671 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,7n,63p,839b,378s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cs/xl2.enc}{/usr/local/te
 xlive/2022/texmf-dist/fonts/enc/dvips/cs/xt2.enc}{/usr/local/texlive/2022/texmf
 -dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2022/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type
-1/urw/courier/ucrr8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/ti
-mes/utmb8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a
-.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on clanok.pdf (4 pages, 72932 bytes).
+e1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/u
+rw/courier/ucrr8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times
+/utmb8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a.pf
+b></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on clanok.pdf (4 pages, 221531 bytes).
 PDF statistics:
- 134 PDF objects out of 1000 (max. 8388607)
- 115 compressed objects within 2 object streams
+ 151 PDF objects out of 1000 (max. 8388607)
+ 122 compressed objects within 2 object streams
  23 named destinations out of 1000 (max. 500000)
- 145 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 160 words of extra memory for PDF output out of 10000 (max. 10000000)
 
