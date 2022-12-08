@@ -197,9 +197,9 @@ To describe an agent using physics, it is important to have some
 mathematical variables that describe it. Craig Raynolds in his 
 paper \cite{Raynolds} presents a simple 
 vehicle model which needs to be introduced. There are six 
-attributes that our vehicle will possess. 
-
-Simple Vehicle Model: 
+attributes that our vehicle will possess. \\
+Simple Vehicle Model: \\
+\includegraphics[scale=0.6]{attributes.pdf}
 
 \subsection{Characteristics of seek and arrive } \label{characterictics of seek and arrive}
 
@@ -227,7 +227,7 @@ $ *steering force= desired – velocity$
 \end{center}
 
 As we are designing the animation, the steering force is updated with 
-each frame and having lower effect next time every time it is applied. 
+each frame and having lower effect next time each time it is applied. 
 The vector of velocity is being aligned with the desired one
 more and more with every frame.
 
@@ -259,7 +259,7 @@ the lower the speed is.
 
 The objective of this project was to simulate the behavior. This chapter briefly
 explains the tool that was used and describes the main parts of the code.\\
-For the link to the source code of the animation \textbf{\underline{\href{https://editor.p5js.org/RichardCernansky/sketches/E0zAXshWw}{click here}}}.
+For the link to the animation \textbf{\underline{\href{https://editor.p5js.org/RichardCernansky/sketches/E0zAXshWw}{click here}}}.
 
 \subsection{What is p5.js?} \label{p5 char} 
 
@@ -279,12 +279,11 @@ chapter \ref{types of behaviors} (variable for mass is missing because we do not
 so it will not affect). As an input it gets updated $x$ and $y$ position
 of the vehicle. 
 
-
 \subsubsection{seek() function} \label{seekf} 
 
 Seek function gets as an input vector Target representing $x$ and $y$ position
 of the target. First, it calculates the steering force by subtracting velocity vector
-from desired velocity vector (\ref{seek}). An if statement included in a function checks if 
+from desired velocity vector (\ref{seek}). An $if$ statement included in a function checks if 
 the distance is lower than 100 pixels. If yes, then it sets the magnitude of the 
 desired velocity to some portion of max speed accordingly to the distance. 
 Otherwise, it sets the magnitude to the size of max speed.
@@ -310,7 +309,15 @@ and physics of forces.
 
 \section{Results} \label{results} 
 
-The goal of this project was to animate seek and arrival 
+After stating a problem in \ref{problem to solve}, the result of this 
+project was made clear. I created a realistic animation of steering bahavior
+using knowledge of forces, vectors and operating with them. 
+This can be used in game graphics for creating self-operating worlds
+of objects that move according to an algorythm they obey. 
+
+\section{Conclusion} \label{conclusion}
+
+To sum up, the goal of this project was to animate seek and arrival 
 steering behavior in two dimensions. The challange was to 
 make it look as realitic as possible. Coming 
 up with the formulas to calculate the steering force using 
@@ -325,14 +332,10 @@ for steering into an algorythm that animated such a behavior.
 
 Although I succeeded in creating a certain type of steering behavior,
 there are still many to be invented. For example, complicated group behaviors
-follow-up this topic. Also, considering the three dimensional space
-and get pure reality-based models is still an open topic to be explored
+follow-up this topic. Also considering the three dimensional space
+and inventing pure reality-based models is still an open topic to be explored
 and used both in games and reality for motion behaviors of 
 self-driving cars.
-
-\section{Conclusion} \label{conclusion}
-
-To sum
 
 \section*{Acknowledgement}
 I would like to thank my friend Lukáš Častven for introducing 
@@ -342,6 +345,4 @@ the problem to me and arousing my interest in the topic\ldots
 \bibliographystyle{plain} 
 
 \end{document}
-
-
 
