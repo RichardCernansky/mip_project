@@ -38,15 +38,15 @@ vedenie: Mirwais Ahmadzai}}
 
 \begin{abstract}
 
-In this article we will focus on the problematic of animating steering 
-behaviors of software-based autonomus agents in 
-games. As we want the player to have the best realistic experience
-from the movement of the objects possible, we need to design 
-their behavior according to the physics that describes it. 
-The objective of this aritcle is to explain my ideas on how to calculate 
-the steering force in the seek and arrive steering behavior and create 
-an algorythm that animates such motion. The algorythm will be written
-in p5.js library of JavaScript language. 
+    In this article, we will focus on the problem of animating steering 
+    behaviors of software-based autonomous agents in 
+    games. As we want the player to have the best realistic experience
+    from the movement of the objects possible, we need to design 
+    their behavior according to the physics that describes it. 
+    The objective of this article is to explain my ideas on how to calculate 
+    the steering force in the seek and arrive steering behavior and create 
+    an algorithm that animates such motion. The algorithm will be written
+    in the p5.js library of JavaScript language. 
 
 \end{abstract}
 
@@ -54,14 +54,14 @@ in p5.js library of JavaScript language.
 
 Development in animation and games forces the creators to make 
 the games more and more realistic. One of the most important 
-aspects of realistic perception of a game is the movement of 
+aspects of the realistic perception of a game is the movement of 
 objects and the animation itself. Jonathan Cooper in the chapter 
 \textbf{The 12 principles of animation in video games}\cite{Cooper} 
 of his book mentions 12 basic principles of a well-animated game. 
 The sixth one named Slow In and Slow Out says:\emph{"Objects that burst into full 
 speed immediately can look weightless and unrealistic, so it is here 
-again that there is conflict between the gameplay desire to give 
-objects ability to move immediately versus the artistic desire to give weight 
+again that there is a conflict between the gameplay desire to give 
+objects the ability to move immediately versus the artistic desire to give weight 
 to a character."} That is why I came up with some ideas on how to 
 design steering motion animations that look as realistic as possible.
 
@@ -73,44 +73,43 @@ arrive} we will have a closer look at the problem and derive some
 formulas necessary for the simulation. Finally, we will simulate 
 the steering behavior, stated as a problem in p. \ref{problem to 
 solve} by writing the code in p5.js (in p. \ref{code}).
-
 \section{Autonomous agents} \label{autonomous agents}
 
 \subsection{Definition of autonomous agents} \label{definition of a.a.}
 
-The autonomous agents generally refer to an entity that chooses 
+Autonomous agents generally refer to an entity that chooses 
 how to act in its environment without any influence from a global 
 plan or a leader. In games, these agents are not controlled by a 
-player, but they are important part of the game because their action
+player, but they are an important part of the game because their actions
 can significantly influence the flow of the game. For example, 
-a villain who runs away from police decides on his own that he
+a villain who runs away from the police decides on his own that he
 wants to escape and starts an action. There are three key 
 components of autonomous agents we want to keep in mind 
 \cite{Verhagen}. 
 
 \begin{enumerate}
-\item An autonomous agent has limited ability to perceive its 
-environment. It makes sense that if autonomous agent must decide 
-on its action, it should be somehow aware of the environment it 
-is located in. The question here is how much limited the ability is. 
-If we wanted the object to be all-knowing creature aware of 
-everything else around it, we need to give it an access to 
-information about everything. On the other side if we wanted it 
-to have just very narrow view of the environment, let’s say just 
-a few pixels around it.
-
-\item An autonomous agent processes the information from its 
-environment and calculates an action. The action is represented 
-as a force that influences the object. For example, a police 
-officer sees a thief and is attracted to him. The attraction is 
-represented by a force pointing towards his location. 
-
-\item An autonomous agent should have no leader. This is not 
-something that defines every autonomous agent. Sometimes you need 
-to state some global rules that it must follow, but mostly you want 
-the object to decide on its own\footnote{however, the designer can 
-include some specific atributes if needed}, calculate its own 
-actions.
+    \item An autonomous agent has a limited ability to perceive its 
+    environment. It makes sense that if an autonomous agent must decide 
+    on its action, it should be somehow aware of the environment it 
+    is located in. The question here is how limited the ability is. 
+    If we wanted the object to be an all-knowing creature aware of 
+    everything else around it, we need to give it access to 
+    information about everything. On the other side if we wanted it 
+    to have just a very narrow view of the environment, let’s say just 
+    a few pixels around it.
+    
+    \item An autonomous agent processes the information from its 
+    environment and calculates an action. The action is represented 
+    as a force that influences the object. For example, a police 
+    officer sees a thief and is attracted to him. The attraction is 
+    represented by a force pointing toward his location. 
+    
+    \item An autonomous agent should have no leader. This is not 
+    something that defines every autonomous agent. Sometimes you need 
+    to state some global rules that it must follow, but mostly you want 
+    the object to decide on its own\footnote{however, the designer can 
+    include some specific attributes if needed}, calculate its own 
+    actions.
 
 \end{enumerate}
 
@@ -133,17 +132,16 @@ Containing more than two autonomous agents.
 
 \end{itemize}
 
-In this article we will focus on the first mentioned because 
+In this article, we will focus on the first mentioned because 
 the combined behaviors are just more complicated kinds but 
 the basic ideas are derived from the simple behaviors for 
 individuals and groups. 
-
 
 \section{Problem statement} \label{problem}
 
 Now as we have explained what it takes for the object to behave like 
 an autonomous agent we should understand more specific self-operating
-concept of a vehicle to be able to grasp on a problem we state later 
+concept of a vehicle to be able to grasp a problem we state later 
 in this chapter.
 
 \subsection{Braitenberg vehicle} \label{braitenberg}
@@ -159,29 +157,31 @@ an example of that type of vehicle from the book:
 \includegraphics[scale=0.33]{braitenberg.jpg}
 \quad Figure 1
 \bigbreak
+
 Vehicle A steers away from the light source and vehicle B steers 
-towards the light source. It is not just about steering away or 
+toward the light source. It is not just about steering away or 
 towards the sun. We could say that these vehicles feel emotion about 
-the object. Vehicle A feels fear from the sun and vehicle B is 
+the object. Vehicle A feels fear of the sun and vehicle B is 
 attracted to it. We want the term vehicle to be clear because in 
 the paper when we mention vehicle, we will be referring to the 
-concept of Braitenberg vehicle and its characteristics. 
+concept of the Braitenberg vehicle and its characteristics. 
 
 \subsection{Problem to solve} \label{problem to solve}
-Our goal is to animate simple steering behavior. The best way to represent
-it is by steering a car. It is also a frequently occured situation 
-in many games to steer self-controlled car realistically.
+
+Our goal is to animate a simple steering behavior. The best way to represent
+it is by steering a car. It is also a frequently occurring situation 
+in many games to steer a self-controlled car realistically.
 Let’s simulate a simple behavior for a pair 
 (p. \ref{types of behaviors}). The car that 
-is expected to arrive to a specific position (f. e. a parking lot). 
+is expected to arrive at a specific position (f. e. a parking lot). 
 We could say that in the car there is a driver or a device that decides on its own.
-It  perceives the environment with its "eyes" and sees the location of the parking 
+It perceives the environment with its "eyes" and sees the location of the parking 
 lot. Processes its distance from the place and calculates and action \ref{definition of a.a.}. 
 It starts \textbf{steering} towards the parking lot (attraction towards the 
 parking lot is based on the same emotional principle as vehicle B in part \ref{braitenberg}). 
 Notice the word steering here which is very important. We do not want 
 to simulate an unrealistically moving car that is immediately able to 
-turn around and head towards the target in a maximum speed. We want the 
+turn around and head toward the target at a maximum speed. We want the 
 animation to be smooth and realistically looking. What rules do we 
 have to follow if we want to simulate a situation like this?
 
@@ -189,7 +189,7 @@ have to follow if we want to simulate a situation like this?
 
 In the language of steering behaviors, the problem can be translated as 
 a designing a seek and arrival behavior on one object and a target. 
-If we want to write an algorythm we need to come up with some 
+If we want to write an algorithm we need to come up with some 
 formulas to calculate the motion.
 
 \subsection{Simple vehicle model} \label{model}
@@ -198,15 +198,19 @@ mathematical variables that describe it. Craig Raynolds in his
 paper \cite{Raynolds} presents a simple 
 vehicle model which needs to be introduced. There are six 
 attributes that our vehicle will possess. \\
-Simple Vehicle Model: \\
+\textbf{Simple Vehicle Model:} \\
 \includegraphics[scale=0.6]{attributes.pdf}
+
+\textbf{Important note} - Most characters have a maximum speed they can travel; 
+they can’t accelerate indefinitely. The maximum can be
+explicit, held in a variable or constant. (\cite{Millington} chapter 3.3.3.)
 
 \subsection{Characteristics of seek and arrive } \label{characterictics of seek and arrive}
 
 \subsubsection{Seek} \label{seek}
 
-Seeking steers a character towards a specified position in a space. 
-This behavior aligns the vector of a velocity towards the target. 
+Seeking steers a character towards a specified position in space. 
+This behavior aligns the vector of a velocity toward the target. 
 But how do we calculate the steering force if we do not want the 
 vehicle to steer completely right after seeing the target? We can 
 diagram our problem from \ref{problem to solve}.
@@ -227,14 +231,14 @@ $ *steering force= desired – velocity$
 \end{center}
 
 As we are designing the animation, the steering force is updated with 
-each frame and having lower effect next time each time it is applied. 
-The vector of velocity is being aligned with the desired one
+each frame and has a lower effect next time each time it is applied. 
+The vector of velocity is aligned with the desired one
 more and more with every frame.
 
 \subsubsection{Arrive} \label{arrive}
 
 When we want to simulate arrival, we must think about gradually 
-decreasing the speed of the vehicle and eventually stop it once the 
+decreasing the speed of the vehicle and eventually stopping it once the 
 vehicle passes some imaginary boundary. The following diagram describes 
 the situation. 
 
@@ -251,7 +255,7 @@ $d \leq r \Rightarrow speed = (d/r)  . maxSpeed$
 From the second equation we can see that once the object passes through
 the circle of the radius r, the speed is decreasing in a fraction of 
 the distance $d$ and radius $r$. Once we have the new and \textbf{lower} 
-speed calculated, then the magnitude of a vector of desired velocity is set
+speed calculated, then the magnitude of a vector of the desired velocity is set
 to the size of that lower max speed. The closer to the place of stopping,
 the lower the speed is.
 
@@ -275,8 +279,8 @@ will use it for creating the animation from \ref{problem to solve}.
 \subsubsection{constructor() function} \label{constructorf} 
 
 This function creates all the variables for values that were stated in the 
-chapter \ref{types of behaviors} (variable for mass is missing because we do not change it in animation
-so it will not affect). As an input it gets updated $x$ and $y$ position
+chapter \ref{types of behaviors} (the variable for mass is missing because we do not change it in animation
+so it will not affect it). As an input, it gets updated $x$ and $y$ position
 of the vehicle. 
 
 \subsubsection{seek() function} \label{seekf} 
@@ -290,50 +294,52 @@ Otherwise, it sets the magnitude to the size of max speed.
 
 \subsubsection{update() function} \label{updatef} 
 
-Update function applies the steering force combined with velocity to the vehicle
-every frame. The result is our realistically looking steering animation. 
+The update function applies the steering force combined with velocity to the vehicle
+in every frame. The result is our realistically-looking steering animation. 
 
 \section{Research method and literature review} \label{research method} 
 
 The source article \cite{Raynolds} is what introduced me to the topic. 
-From the beginning of my research there were a lot of questions. 
-The idea of autonomus agent was mentioned in Raynold's article
+From the beginning of my research, there were a lot of questions. 
+The idea of an autonomus agent was mentioned in Raynold's article
 but to completely understand it, I had to search deeper. A part of the book Vehicles 
-\cite{Braitenberg} and the article from Verhangen \cite{Verhagen} gave me the complete
+\cite{Braitenberg} and the article from Verhangen \cite{Verhagen} gave me a complete
 understanding. 
 
 Raynold's article is what also helped me the most with coming up with formulas for
-calculation of the steering force. The explanation of his ideas is clear and 
+the calculation of the steering force. The explanation of his ideas is clear and 
 understandable for anyone with a knowledge of coordinate geometry 
-and physics of forces. 
+and the physics of forces. 
 
 \section{Results} \label{results} 
 
 After stating a problem in \ref{problem to solve}, the result of this 
-project was made clear. I created a realistic animation of steering bahavior
-using knowledge of forces, vectors and operating with them. 
-This can be used in game graphics for creating self-operating worlds
-of objects that move according to an algorythm they obey. 
+project was made clear. I created a realistic animation of seek and arrive
+steering behavior using knowledge of forces, and vectors and operating with them. 
+This can be used in in-game graphics for creating self-operating worlds
+of objects that move according to an algorithm they obey. The player 
+has then a better artistic experience from their motion because it is 
+natural and unpredictable.  
 
 \section{Conclusion} \label{conclusion}
 
 To sum up, the goal of this project was to animate seek and arrival 
-steering behavior in two dimensions. The challange was to 
-make it look as realitic as possible. Coming 
+steering behavior in two dimensions. The challenge was to 
+make it look as realistic as possible. Firstly we came
 up with the formulas to calculate the steering force using 
-physics was necessary. We did not want the vehicle to be able to 
-steer immediately and rush in the full speed to the target. Instead, 
+physics. We did not want the vehicle to be able to 
+steer immediately and rush at full speed to the target. Instead, 
 we wanted to make the animation smooth, which was done. 
 
 The second challenge was to make the vehicle eventually stop after 
 reaching the target. The idea of gradually slowing down after 
 crossing a boundary works perfectly. The last part was to put the ideas
-for steering into an algorythm that animated such a behavior. 
+for steering into an algorithm that animated such behavior. 
 
 Although I succeeded in creating a certain type of steering behavior,
 there are still many to be invented. For example, complicated group behaviors
-follow-up this topic. Also considering the three dimensional space
-and inventing pure reality-based models is still an open topic to be explored
+follow up on this topic. Also considering the three-dimensional space
+and inventing reality-based models is still an open topic to be explored
 and used both in games and reality for motion behaviors of 
 self-driving cars.
 
