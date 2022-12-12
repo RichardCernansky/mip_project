@@ -40,18 +40,19 @@ vedenie: Mirwais Ahmadzai}}
 
     In this article, we will focus on the problem of animating steering 
     behaviors of software-based autonomous agents in 
-    games. As we want the player to have the best realistic experience
+    games. As we want the player to have the best realistic experience 
     from the movement of the objects possible, we need to design 
     their behavior according to the physics that describes it. 
     The objective of this article is to explain my ideas on how to calculate 
     the steering force in the seek and arrive steering behavior and create 
-    an algorithm that animates such motion. The algorithm will be written
+    an algorithm that animates such motion. The algorithm will be written 
     in the p5.js library of JavaScript language. 
 
 \end{abstract}
 
 \section{Introduction}
 
+\subsection{Motives and contents of the article} \label{motives}
 Development in animation and games forces the creators to make 
 the games more and more realistic. One of the most important 
 aspects of the realistic perception of a game is the movement of 
@@ -63,7 +64,7 @@ speed immediately can look weightless and unrealistic, so it is here
 again that there is a conflict between the gameplay desire to give 
 objects the ability to move immediately versus the artistic desire to give weight 
 to a character."} That is why I came up with some ideas on how to 
-design steering motion animations that look as realistic as possible.
+design steering motion animations on the objects that look as realistic as possible.
 
 In this article, we will call the objects autonomous agents. 
 More about them will be explained in part \ref{definition of a.a.}. 
@@ -72,8 +73,26 @@ a problem in part \ref{problem to solve}. In part \ref{seek and
 arrive} we will have a closer look at the problem and derive some 
 formulas necessary for the simulation. Finally, we will simulate 
 the steering behavior, stated as a problem in p. \ref{problem to 
-solve} by writing the code in p5.js (in p. \ref{code}).
+solve} by writing the code in p5.js (in p. \ref{class Vehicle}). 
+
+\subsection{A brief history of steering animation in video games} \label{history}
+Animation in games has a long history of depicting the steering movements of 
+objects. The early days of gaming saw the introduction of simple animations, 
+such as the moving dots in the game Pong, which were controlled by the player. 
+As technology advanced, so did the ability to create more complex animations, 
+including the steering movements of objects. 
+
+One of the major developments in 
+the history of animation in games was the introduction of 3D graphics in the 
+1990s, which allowed for more realistic and dynamic depictions of steering 
+movements. Today, animation in games plays a crucial role in creating a lifelike 
+and immersive gaming experience, with many games featuring highly detailed 
+animations of objects and characters moving and steering in a realistic manner.
+
 \section{Autonomous agents} \label{autonomous agents}
+
+The term autonomous agent can be obscure so at first we need to 
+understand it.
 
 \subsection{Definition of autonomous agents} \label{definition of a.a.}
 
@@ -197,7 +216,9 @@ To describe an agent using physics, it is important to have some
 mathematical variables that describe it. Craig Raynolds in his 
 paper \cite{Raynolds} presents a simple 
 vehicle model which needs to be introduced. There are six 
-attributes that our vehicle will possess. \\
+attributes that our vehicle will possess:
+\newline 
+\newline
 \textbf{Simple Vehicle Model:} \\
 \includegraphics[scale=0.6]{attributes.pdf}
 
@@ -262,7 +283,7 @@ the lower the speed is.
 \section{Simulating the behavior in p5.js} \label{simulation} 
 
 The objective of this project was to simulate the behavior. This chapter briefly
-explains the tool that was used and describes the main parts of the code.\\
+introduces the tool that was used and explains the main parts of the code.\\
 For the link to the animation \textbf{\underline{\href{https://editor.p5js.org/RichardCernansky/sketches/E0zAXshWw}{click here}}}.
 
 \subsection{What is p5.js?} \label{p5 char} 
@@ -311,21 +332,57 @@ the calculation of the steering force. The explanation of his ideas is clear and
 understandable for anyone with a knowledge of coordinate geometry 
 and the physics of forces. 
 
-\section{Results} \label{results} 
+\section{Result} \label{results} 
 
 After stating a problem in \ref{problem to solve}, the result of this 
-project was made clear. I created a realistic animation of seek and arrive
-steering behavior using knowledge of forces, and vectors and operating with them. 
-This can be used in in-game graphics for creating self-operating worlds
+project was made clear. We wrote a code for a realistic animation of seek and arrive
+steering behavior using knowledge of forces, and vectors and operating with them.  
+This can be used in in-game graphics for creating self-controlled worlds 
 of objects that move according to an algorithm they obey. The player 
-has then a better artistic experience from their motion because it is 
-natural and unpredictable.  
+has then a better artistic experience from their motion because it looks 
+natural and unpredictable. 
+
+\section{Technology and people} \label{technology and people} 
+
+Technology and people often intersect in the realm of steering behaviors.
+Steering behaviors are a core part of many types of technology, from animations in games,
+to self-driving cars, drones or virtual assistants and robots. 
+These technologies rely on algorithms and sensors to gather information about 
+their surroundings and make decisions based 
+on that information, enabling them to move and interact with the world 
+in intelligent and adaptive ways. 
+
+At the same time, if we consider the basic idea of autonomous agents,
+we could think of it as an important aspect of human psychology and sociology, as 
+people constantly make decisions and adjust their behavior in response to their 
+environment. This could help us 
+
+\section{Sustainability question} \label{sustainability} 
+
+Sustainability in animations in games is becoming an increasingly important 
+issue in the industry. As animation technology becomes more advanced, the amount 
+of computing power and energy required to create and run animations in games has 
+increased. This has led to concerns about the environmental impact of animations 
+in games and the need for more sustainable practices. 
+Game developers are working to reduce the environmental impact of their animations
+by using more efficient 
+algorithms and hardware, as well as by implementing strategies for reducing the 
+energy consumption of their games. 
+
+Additionally, some game developers are 
+incorporating sustainability themes into their games to raise awareness about 
+the importance of sustainability among players. 
+According to a research by
+Rajamangala University of Technology in Thailand \cite{phong}, the very efficient way for 
+people to learn manners of sustainability is by playing video games during 
+the age of primary education when the information delivered through the games 
+remains among most of the children for the rest of their lives.
 
 \section{Conclusion} \label{conclusion}
 
 To sum up, the goal of this project was to animate seek and arrival 
 steering behavior in two dimensions. The challenge was to 
-make it look as realistic as possible. Firstly we came
+make it look as realistic as possible. Firstly, we came 
 up with the formulas to calculate the steering force using 
 physics. We did not want the vehicle to be able to 
 steer immediately and rush at full speed to the target. Instead, 
@@ -340,15 +397,15 @@ Although I succeeded in creating a certain type of steering behavior,
 there are still many to be invented. For example, complicated group behaviors
 follow up on this topic. Also considering the three-dimensional space
 and inventing reality-based models is still an open topic to be explored
-and used both in games and reality for motion behaviors of 
+and can be used both in games and reality for the motion of 
 self-driving cars.
 
 \section*{Acknowledgement}
 I would like to thank my friend Lukáš Častven for introducing 
 the problem to me and arousing my interest in the topic\ldots
 
-\bibliography{literatura}
-\bibliographystyle{plain} 
+\bibliography{literatura} 
+\bibliographystyle{plain}  
 
-\end{document}
+\end{document} 
 
