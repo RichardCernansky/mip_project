@@ -89,7 +89,7 @@ movements. Today, animation in games plays a crucial role in creating a lifelike
 and immersive gaming experience, with many games featuring highly detailed 
 animations of objects and characters moving and steering in a realistic manner.
 
-\section{Autonomous agents} \label{autonomous agents}
+\section{Autonomous agents} \label{autonomous agents} 
 
 The term autonomous agent can be obscure so at first we need to 
 understand it.
@@ -275,7 +275,7 @@ $d \leq r \Rightarrow speed = (d/r)  . maxSpeed$
 
 From the second equation we can see that once the object passes through
 the circle of the radius r, the speed is decreasing in a fraction of 
-the distance $d$ and radius $r$. Once we have the new and \textbf{lower} 
+the distance $d$ and radius $r$. Once we have the new \textbf{lower} 
 speed calculated, then the magnitude of a vector of the desired velocity is set
 to the size of that lower max speed. The closer to the place of stopping,
 the lower the speed is.
@@ -283,7 +283,8 @@ the lower the speed is.
 \section{Simulating the behavior in p5.js} \label{simulation} 
 
 The objective of this project was to simulate the behavior. This chapter briefly
-introduces the tool that was used and explains the main parts of the code.\\
+introduces the tool that was used and explains the main parts of the code. There is also a short 
+commentary to a time complexity of the algorithm included.\\
 For the link to the animation \textbf{\underline{\href{https://editor.p5js.org/RichardCernansky/sketches/E0zAXshWw}{click here}}}.
 
 \subsection{What is p5.js?} \label{p5 char} 
@@ -318,6 +319,19 @@ Otherwise, it sets the magnitude to the size of max speed.
 The update function applies the steering force combined with velocity to the vehicle
 in every frame. The result is our realistically-looking steering animation. 
 
+\subsection{Time complexity} \label{time complexity} 
+
+The time complexity of a seeking steering behavior algorithm 
+for one object and one target is O(1), meaning that the 
+calculation time remains constant regardless of the number 
+of objects being simulated. This is because seeking is a 
+low-complexity steering behavior algorithm that only 
+requires a few simple calculations to determine the steering 
+force for a single object. The calculations involved in 
+seeking are relatively simple and do not depend on the 
+number of objects being simulated, so the calculation time 
+remains constant.
+
 \section{Research method and literature review} \label{research method} 
 
 The source article \cite{Raynolds} is what introduced me to the topic. 
@@ -342,7 +356,7 @@ of objects that move according to an algorithm they obey. The player
 has then a better artistic experience from their motion because it looks 
 natural and unpredictable. 
 
-\section{Technology and people} \label{technology and people} 
+\section{The technology and people} \label{technology and people} 
 
 Technology and people often intersect in the realm of steering behaviors.
 Steering behaviors are a core part of many types of technology, from animations in games,
@@ -399,6 +413,8 @@ follow up on this topic. Also considering the three-dimensional space
 and inventing reality-based models is still an open topic to be explored
 and can be used both in games and reality for the motion of 
 self-driving cars.
+
+
 
 \section*{Acknowledgement}
 I would like to thank my friend Lukáš Častven for introducing 
